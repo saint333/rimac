@@ -21,6 +21,7 @@ export default function Home() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
 
   const [validando, setValidando] = useState(false);
@@ -30,6 +31,7 @@ export default function Home() {
     console.log(data);
     setTimeout(() => {
       setValidando(false);
+      reset();
     }, 3000);
   }
 
