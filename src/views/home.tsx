@@ -7,6 +7,8 @@ import blurVerdeMovil from "../assets/img/blur-verde-movil.png";
 import check from "../assets/img/check.png";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 type Inputs = {
   documentType: HTMLSelectElement;
@@ -26,12 +28,15 @@ export default function Home() {
 
   const [validando, setValidando] = useState(false);
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setValidando(true);
     console.log(data);
     setTimeout(() => {
       setValidando(false);
       reset();
+      navigate("/plans");
     }, 3000);
   }
 

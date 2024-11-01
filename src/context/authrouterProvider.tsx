@@ -1,5 +1,4 @@
-import { createContext, useCallback } from "react";
-import { useState, useEffect, useMemo } from "react";
+import { createContext, useCallback, useState, useEffect, useMemo, ReactNode } from "react";
 import { BrowserRouter, Routes } from "react-router-dom";
 import SplashScreen from "../components/splashscreen";
 
@@ -7,16 +6,16 @@ const AuthContext = createContext({
   isAuthenticated: false,
 });
 
-function AuthRouteProvider({ children }) {
+function AuthRouteProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<null | Record<string, string>>(null);
 
   const getAuthService = useCallback(() => {
-    return localStorage.getItem("authService");
+    return JSON.parse(localStorage.getItem("authService") || "{}");
   }, []);
 
-  const setAuthService = useCallback((authService) => {
+  const setAuthService = useCallback((authService: string) => {
     if (authService) {
       localStorage.setItem("authService", authService);
     }
