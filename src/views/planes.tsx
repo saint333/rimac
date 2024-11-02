@@ -1,4 +1,3 @@
-import volver from "../assets/img/volver.png";
 import { Link } from "react-router-dom";
 import { CardOptions, PlanCardProps } from "../components/optionscard";
 import { options } from "../mock/cardoptions";
@@ -72,7 +71,7 @@ export default function Planes() {
         <div className='container'>
           <div className='content'>
             <Link to='/' className='w-fit block'>
-              <img src={volver} className='mr-[8px]' alt='Volver' loading="lazy" />
+              <img src='./img/volver.png' className='mr-[8px]' alt='Volver' loading="lazy" />
             </Link>
             <div className='content__info'>
               <div className='w-full max-w-[544px] ml-auto mr-auto'>

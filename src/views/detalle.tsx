@@ -1,5 +1,3 @@
-import volver from "../assets/img/volver.png";
-import familia from "../assets/img/familia.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -60,7 +58,7 @@ export default function Detalle() {
         <div className='container'>
           <div className='content'>
             <Link to='/' className='w-fit block'>
-              <img src={volver} className='mr-[8px]' alt='Volver' loading="lazy" />
+              <img src='./img/volver.png' className='mr-[8px]' alt='Volver' loading="lazy" />
             </Link>
             <div className='content__info'>
               <h2 className='font-bold text-[40px] tracking-[-.6px] leading-[48px]'>
@@ -74,7 +72,7 @@ export default function Detalle() {
                   Precios calculados para:
                 </div>
                 <div className='flex items-center gap-[12px] mt-[8px]'>
-                  <img src={familia} alt='familia' loading="lazy" />
+                  <img src='./img/familia.png' alt='familia' loading="lazy" />
                   <div className='text-xl font-black tracking-[-.2px] text-[var(--neutrals7)]'>
                     Rocío Miranda Díaz
                   </div>

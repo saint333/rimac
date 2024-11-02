@@ -1,6 +1,3 @@
-import check from "../assets/img/check.png";
-import plancasa from "../assets/img/plan-casa.png";
-import planclinica from "../assets/img/plan-clinica.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +30,7 @@ export const CardOptions: React.FC<CardOptionsProps> = ({
       />
       <label htmlFor={id} className='check__label--info'>
         <div className='check__label--box'>
-          <img src={check} className='i select-none' alt='Check Box' loading="lazy" />
+          <img src='./img/check.png' className='i select-none' alt='Check Box' loading="lazy" />
         </div>
         <img src={url} className='select-none' alt='icon' loading="lazy" />
         <div className='text-xl font-black tracking-[-.2px] text-[var(--neutrals7)] mt-[8px]'>
@@ -99,7 +96,7 @@ export const PlanCard = ({
             al mes
           </div>
         </div>
-        <img src={index == 1 ? planclinica : plancasa} alt={name} />
+        <img src={index == 1 ? './img/plan-clinica' : './img/plan-casa'} alt={name} />
       </div>
       <div className='w-full h-[1px] bg-[var(--neutrals4)] my-[24px]'></div>
       <ul className='mb-[40px] flex flex-col gap-[24px]'>

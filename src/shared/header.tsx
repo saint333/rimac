@@ -1,5 +1,5 @@
-import logoRimac from "../assets/img/logo.png";
-import telefono from "../assets/img/celular.png";
+// import logoRimac from "../assets/img/logo.png";
+// import telefono from "../assets/img/celular.png";
 
 export default function Header() {
   return (
@@ -8,7 +8,7 @@ export default function Header() {
       <nav className='container'>
         <div className='header__logo'>
           <img
-            src={logoRimac}
+            src='./img/logo.png'
             width='73'
             className='select-none'
             alt='logo rimac'
@@ -27,7 +27,7 @@ export default function Header() {
             href='tel:+0114116001'
             className='flex items-center gap-x-2 text-[16px] leading-5 hover:underline active:text-[var(--neutrals6)]'
           >
-            <img src={telefono} alt='icono de celular' width='20' heigth='20' loading="lazy" />
+            <img src='./img/celular.png' width='20' heigth='20' alt='icono de celular' loading="lazy" />
             <div className='font-br-sonoma-bold tracking-[.4px]'>
               (01) 411 6001
             </div>

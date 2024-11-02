@@ -1,13 +1,10 @@
-import logoFooter from '../assets/img/logo-footer.png';
-import logoFooterMovil from '../assets/img/logo-footer-movil.png';
-
 export default function Footer() {
   return (
     <footer className='footer'>
       <div className='container'>
         <div className='footer__left'>
           <img
-            src={logoFooter}
+            src='./img/logo-footer.png'
             className='hide-for-mobile'
             width='85'
             alt='logo rimac'
@@ -15,7 +12,7 @@ export default function Footer() {
             loading="lazy"
           />
           <img
-            src={logoFooterMovil}
+            src='./img/logo-footer-movil.png'
             className='hide-for-desktop m-auto'
             width='138'
             alt='logo rimac'

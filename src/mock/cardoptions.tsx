@@ -1,9 +1,6 @@
-import parami from "../assets/img/para-mi.png";
-import paramas from "../assets/img/para-mas.png";
-
 export const options = [
   {
-    url: parami,
+    url: './img/para-mi.png',
     id: "pay1",
     value: "para-mi",
     title: "Para mí",
@@ -11,7 +8,7 @@ export const options = [
       "Cotiza tu seguro de salud y agrega familiares si así lo deseas.",
   },
   {
-    url: paramas,
+    url: './img/para-mas.png',
     id: "pay2",
     value: "para-alguien-mas",
     title: "Para alguien más",

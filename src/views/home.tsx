@@ -1,10 +1,3 @@
-import home from "../assets/img/home.png";
-import homeMovil from "../assets/img/home-movil.png";
-import blurMorado from "../assets/img/blur-morado.png";
-import blurMoradoMovil from "../assets/img/blur-morado-movil.png";
-import blurVerde from "../assets/img/blur-verde.png";
-import blurVerdeMovil from "../assets/img/blur-verde-movil.png";
-import check from "../assets/img/check.png";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +36,7 @@ export default function Home() {
     <main className='login'>
       <div className='container'>
         <div className='login__left select-none hide-for-mobile'>
-          <img src={home} alt='portada rimac' width='480' height='560' loading="lazy" />
+          <img src='./img/home.png' alt='portada rimac' width='480' height='560' loading="lazy" />
         </div>
         <div className='login__right'>
           <div className='login__right--mobil'>
@@ -61,7 +54,7 @@ export default function Home() {
             </div>
             <div className='hide-for-desktop login__right--mobil--img'>
               <img
-                src={homeMovil}
+                src='./img/home-movil.png'
                 alt='portal movil'
                 width='136'
                 height='160'
@@ -167,7 +160,7 @@ export default function Home() {
                 />
 
                 <div className='check__label--box'>
-                  <img src={check} className='i' alt='Check Box' loading="lazy" />
+                  <img src='./img/check.png' className='i' alt='Check Box' loading="lazy" />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política de Privacidad
@@ -188,7 +181,7 @@ export default function Home() {
                   })}
                 />
                 <div className='check__label--box'>
-                  <img src={check} className='i' alt='Check Box' loading="lazy" />
+                  <img src='./img/check.png' className='i' alt='Check Box' loading="lazy" />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política Comunicaciones Comerciales
@@ -222,7 +215,7 @@ export default function Home() {
         </div>
       </div>
       <img
-        src={blurVerde}
+        src='./img/blur-verde.png'
         className='absolute right-0 top-0 select-none hide-for-mobile'
         alt='blur verde'
         width='432'
@@ -230,7 +223,7 @@ export default function Home() {
         loading="lazy"
       />
       <img
-        src={blurVerdeMovil}
+        src='./img/blur-verde-movil.png'
         className='absolute right-0 top-0 select-none hide-for-desktop'
         alt='blur verde movil'
         width='352'
@@ -238,7 +231,7 @@ export default function Home() {
         loading="lazy"
       />
       <img
-        src={blurMorado}
+        src='./img/blur-morado.png'
         className='absolute left-0 bottom-0 select-none hide-for-mobile'
         alt='blur morado'
         width='432'
@@ -246,7 +239,7 @@ export default function Home() {
         loading="lazy"
       />
       <img
-        src={blurMoradoMovil}
+        src='./img/blur-morado-movil.png'
         className='absolute left-0 bottom-0 select-none hide-for-desktop'
         alt='blur morado movil'
         width='256'
