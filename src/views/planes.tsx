@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { CardOptions, PlanCardProps } from "../components/optionscard";
 import { options } from "../mock/cardoptions";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { PlansData } from "../services/plans";
 import Carousel from "../components/carrusel";
+import { AuthContext } from "../context/authrouterProvider";
 
 export default function Planes() {
   document.querySelector(".header-login")?.classList.add("header");
@@ -11,19 +12,18 @@ export default function Planes() {
   const [loading, setLoading] = useState(false);
   const [planes, setPlanes] = useState<PlanCardProps[] | null[]>([]);
   const [tipoPlan, setTipoPlan] = useState<string>("");
+  const { user } = useContext(AuthContext);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
-    console.log("🚀 ~ handleChange ~ e:", e.target.value);
     setPlanes([null, null, null]);
     setLoading(true);
     const planes = await PlansData();
-    setTimeout(() => {
-      setPlanes(planes);
-      setTipoPlan(e.target.value);
-      setLoading(false);
-    }, 1000);
+    const planesFilter = planes.filter((plan) => plan.age >= user.age);
+    setPlanes(planesFilter);
+    setTipoPlan(e.target.value);
+    setLoading(false);
   };
 
   return (
@@ -54,7 +54,7 @@ export default function Planes() {
               type='button'
               className='border-2 border-[var(--blueberry600)] rounded-full w-[24px] min-w-[24px] h-[24px] grid place-content-center text-[8px] text-[var(--blueberry600)]'
             >
-               &#10094;
+              &#10094;
             </button>
             <div className='flex items-center ml-[16px] w-full'>
               <div className='text-[10px] tracking-[.8px] leading-4 mr-[16px] font-black whitespace-nowrap'>
@@ -71,12 +71,17 @@ export default function Planes() {
         <div className='container'>
           <div className='content'>
             <Link to='/' className='w-fit block'>
-              <img src='./img/volver.png' className='mr-[8px]' alt='Volver' loading="lazy" />
+              <img
+                src='./img/volver.png'
+                className='mr-[8px]'
+                alt='Volver'
+                loading='lazy'
+              />
             </Link>
             <div className='content__info'>
               <div className='w-full max-w-[544px] ml-auto mr-auto'>
                 <h2 className='font-bold text-[40px] tracking-[-.6px] leading-[48px]'>
-                  Rocío ¿Para quién deseas cotizar?
+                  {user.name} ¿Para quién deseas cotizar?
                 </h2>
                 <h3 className='text-[16px] tracking-[.1px] leading-7 text-[var(--neutrals7)] mt-[8px]'>
                   Selecciona la opción que se ajuste más a tus necesidades.

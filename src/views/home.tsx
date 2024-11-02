@@ -1,6 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authrouterProvider";
+import UserData from "../services/user";
 
 type Inputs = {
   documentType: HTMLSelectElement;
@@ -10,7 +12,23 @@ type Inputs = {
   acceptCommercialCommunications: HTMLInputElement;
 };
 
+function calcularEdad(fechaNacimiento) {
+  const hoy = new Date();
+  const fechaNac = new Date(fechaNacimiento);
+  let edad = hoy.getFullYear() - fechaNac.getFullYear();
+  const mes = hoy.getMonth() - fechaNac.getMonth();
+
+  if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+    edad--;
+  }
+
+  return edad;
+}
+
 export default function Home() {
+  const {setAuthService} = useContext(AuthContext);
+  document.querySelector("header")?.classList.add("header-login");
+
   const {
     register,
     handleSubmit,
@@ -19,17 +37,22 @@ export default function Home() {
   } = useForm<Inputs>();
 
   const [validando, setValidando] = useState(false);
+  const [userValid, setUserValid] = useState(false);
 
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setValidando(true);
-    console.log(data);
-    setTimeout(() => {
-      setValidando(false);
+    setUserValid(false);
+    const user = await UserData()
+    setValidando(false);
+    if (data.documentNumber === "87654321" && data.phoneNumber === "987654321") {
       reset();
+      setAuthService({...data, ...user, age: calcularEdad(user.birthDay)});
       navigate("/plans");
-    }, 3000);
+    }else{
+      setUserValid(true)
+    }
   };
 
   return (
@@ -145,6 +168,7 @@ export default function Home() {
                 *El celular ingresado no es válido
               </div>
             )}
+            {userValid && <div className="text-[var(--red5)] text-[14px] leading-4 mt-4">El usuario ingresado no existe</div>}
             <div className='mt-6'>
               <label
                 className={`check__label ${validando && "disabled"} ${

@@ -17,6 +17,7 @@ export default function Footer() {
             width='138'
             alt='logo rimac'
             loading="lazy"
+            height='20'
           />
         </div>
         <div className='footer__right'>

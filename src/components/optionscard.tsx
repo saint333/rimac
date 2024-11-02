@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authrouterProvider";
 
 interface CardOptionsProps {
   url: string;
@@ -62,17 +63,20 @@ export const PlanCard = ({
   const plan = tipo == "para-alguien-mas";
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const {setAuthService, getAuthService} = useContext(AuthContext);
 
   const handleClick = () => {
     setLoading(true);
+    const data = getAuthService();
     setTimeout(() => {
       setLoading(false);
+      setAuthService({ ...data, plan: name, price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price });
       navigate("/summary");
     }, 2000);
   };
 
   return (
-    <div className='w-[288px] min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-full'>
+    <div className='md:w-[288px] md:min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-full'>
       {index == 1 && (
         <div className='recommended absolute top-10 text-xs text-[var(--neutrals7)] bg-[var(--aqual4)] py-0.5 px-2 rounded-md font-black tracking-[.4px]'>
           Plan recomendado
@@ -96,7 +100,7 @@ export const PlanCard = ({
             al mes
           </div>
         </div>
-        <img src={index == 1 ? './img/plan-clinica' : './img/plan-casa'} alt={name} />
+        <img src={index == 1 ? './img/plan-clinica.png' : './img/plan-casa.png'} alt={name} />
       </div>
       <div className='w-full h-[1px] bg-[var(--neutrals4)] my-[24px]'></div>
       <ul className='mb-[40px] flex flex-col gap-[24px]'>

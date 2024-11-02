@@ -1,28 +1,41 @@
 import { createContext, useCallback, useState, useEffect, useMemo, ReactNode } from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
 import SplashScreen from "../components/splashscreen";
 
-const AuthContext = createContext({
+const AuthContext = createContext<{
+  isAuthenticated: boolean;
+  user: Record<string, string> | null;
+  setAuthService: (authService: Record<string, string>) => void;
+  resetAuthService: () => void;
+  getAuthService: () => void;
+}>({
   isAuthenticated: false,
+  user: null,
+  setAuthService: () => {},
+  resetAuthService: () => {},
+  getAuthService: () => {},
 });
 
 function AuthRouteProvider({ children }: { children: ReactNode }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<null | Record<string, string>>(null);
 
   const getAuthService = useCallback(() => {
-    return JSON.parse(localStorage.getItem("authService") || "{}");
+    return JSON.parse(localStorage.getItem("authService") || '{}');
   }, []);
 
-  const setAuthService = useCallback((authService: string) => {
+  const setAuthService = useCallback((authService: Record<string, string>) => {
     if (authService) {
-      localStorage.setItem("authService", authService);
+      localStorage.setItem("authService", JSON.stringify(authService));
+      setUser(authService);
+      setIsAuthenticated(true);
     }
   }, []);
 
   const resetAuthService = useCallback(() => {
     localStorage.removeItem("authService");
+    setUser(null);
+    setIsAuthenticated(false);
   }, []);
 
   const combinedAuth = useMemo(
@@ -31,16 +44,19 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
       user,
       setAuthService,
       resetAuthService,
+      getAuthService
     }),
-    [isAuthenticated, user, setAuthService, resetAuthService]
+    [isAuthenticated, user, setAuthService, resetAuthService, getAuthService]
   );
 
   useEffect(() => {
     const authService = getAuthService();
-    if (authService) {
+    console.log("🚀 ~ useEffect ~ authService:", authService)
+    if (Object.values(authService).length !== 0) {
       setIsAuthenticated(true);
       setUser(authService);
     }
+
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -52,11 +68,9 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider value={combinedAuth}>
-      <BrowserRouter>
-        <Routes>{children}</Routes>
-      </BrowserRouter>
+      {children}
     </AuthContext.Provider>
   );
 }
 
-export { AuthRouteProvider };
+export { AuthRouteProvider, AuthContext };

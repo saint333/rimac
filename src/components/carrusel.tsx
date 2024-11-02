@@ -39,18 +39,15 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
     setCurrentIndex(newIndex);
   };
 
-  console.log(matches);
-  
-
   return (
     <div className='relative w-full'>
       <div className='overflow-hidden relative p-3'>
         <div
-          className='flex transition-transform duration-700 ease-in-out h-600px] gap-5 md:gap-8'
-          style={{ transform: `translateX(-${currentIndex * (matches ? 110 : 19)}%)` }}
+          className='flex transition-transform duration-700 ease-in-out h-600px] gap-3 md:gap-5'
+          style={{ transform: `translateX(-${currentIndex * (planes.length <= 3 ? matches ? 103 : 0 : matches ? 110 : 19)}%)` }}
         >
           {planes.map((plan, index) => (
-            <div key={index} className='relative w-fit flex-shrink-0'>
+            <div key={index} className='relative w-full md:w-fit flex-shrink-0'>
               {loading ? (
                 <div
                   className='min-w-[288px] w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] bg-[var(--neutrals4)] h-[600px] opacity-50'
