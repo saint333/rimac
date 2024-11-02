@@ -85,7 +85,7 @@ export const PlanCard = ({
   };
 
   return (
-    <div className='md:w-[288px] md:min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-full'>
+    <div className='md:w-[288px] md:min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-[696px]'>
       {index == 1 && (
         <div className='recommended absolute top-10 text-xs text-[var(--neutrals7)] bg-[var(--aqual4)] py-0.5 px-2 rounded-md font-black tracking-[.4px]'>
           Plan recomendado
