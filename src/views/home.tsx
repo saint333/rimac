@@ -71,13 +71,14 @@ export default function Home() {
               asesoría. 100% online.
             </h2>
             <div className='inputSelect'>
-              <div className={`inputSelect--select ${validando && "disabled"}`}>
-                <label htmlFor="documentType"></label>
+              <div className={`inputSelect--select flex-col !gap-0 !items-start ${validando && "disabled"}`}>
+                <label htmlFor="documentType" className='before pl-[15px]'>Documento</label>
                 <select
                   id='documentType'
                   name='documentType'
                   {...register("documentType", { required: true })}
                   disabled={validando}
+                  className="!py-0"
                 >
                   <option value='DNI'>DNI</option>
                   <option value='RUC'>RUC</option>
