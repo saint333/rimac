@@ -11,16 +11,18 @@ export default function Planes() {
   document.querySelector(".header-login")?.classList.remove("header-login");
   const [loading, setLoading] = useState(false);
   const [planes, setPlanes] = useState<PlanCardProps[] | null[]>([]);
+  const [tipoPlan, setTipoPlan] = useState<string>("");
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
-    console.log("🚀 ~ handleChange ~ e:", e);
+    console.log("🚀 ~ handleChange ~ e:", e.target.value);
     setPlanes([null, null, null]);
     setLoading(true);
     const planes = await PlansData();
     setTimeout(() => {
       setPlanes(planes);
+      setTipoPlan(e.target.value);
       setLoading(false);
     }, 1000);
   };
@@ -107,7 +109,7 @@ export default function Planes() {
             </div>
             {planes.length > 0 && (
               <div className='planPrice transition-opacity opacity-100 duration-500'>
-                <Carousel planes={planes} loading={loading} />
+                <Carousel planes={planes} loading={loading} tipo={tipoPlan} />
               </div>
             )}
           </div>

@@ -4,10 +4,22 @@ import { PlanCard, PlanCardProps } from "./optionscard";
 interface CarouselProps {
   planes: PlanCardProps[] | null[];
   loading: boolean;
+  tipo: string;
 }
 
-const Carousel = ({ planes, loading }: CarouselProps) => {
+const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [matches, setMatches] = useState<boolean>(window.matchMedia("(max-width: 768px)").matches);
+
+  useEffect(() => {
+    const mediaQueryList = window.matchMedia("(max-width: 768px)");
+
+    const handleChange = (event: MediaQueryListEvent) => setMatches(event.matches);
+    
+    mediaQueryList.addEventListener("change", handleChange);
+
+    return () => mediaQueryList.removeEventListener("change", handleChange);
+  }, []);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -27,28 +39,31 @@ const Carousel = ({ planes, loading }: CarouselProps) => {
     setCurrentIndex(newIndex);
   };
 
+  console.log(matches);
+  
+
   return (
     <div className='relative w-full'>
       <div className='overflow-hidden relative p-3'>
         <div
-          className='flex transition-transform duration-700 ease-in-out h-600px] gap-10'
-          style={{ transform: `translateX(-${currentIndex * 20}%)` }}
+          className='flex transition-transform duration-700 ease-in-out h-600px] gap-5 md:gap-8'
+          style={{ transform: `translateX(-${currentIndex * (matches ? 110 : 19)}%)` }}
         >
           {planes.map((plan, index) => (
-            <div key={index} className='relative'>
+            <div key={index} className='relative w-fit flex-shrink-0'>
               {loading ? (
                 <div
                   className='min-w-[288px] w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] bg-[var(--neutrals4)] h-[600px] opacity-50'
                   key={index}
                 ></div>
               ) : plan ? (
-                <PlanCard key={index} {...plan} index={index} />
+                <PlanCard key={index} {...plan} index={index} tipo={tipo} />
               ) : null}
             </div>
           ))}
         </div>
       </div>
-      <div className="flex justify-center items-center gap-3 mt-6">
+      <div className="flex justify-center items-center gap-3 mt-6 md:hidden">
       <button
         onClick={goToPrevious}
         className={`border-2 rounded-full w-[32px] min-w-[32px] h-[32px] grid place-content-center text-[12px] ${currentIndex === 0 ? 'border-[#A9AFD9] text-[#A9AFD9]' : 'border-[var(--blueberry600)] text-[var(--blueberry600)]'}`}
