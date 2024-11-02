@@ -8,6 +8,7 @@ function SplashScreen() {
 					width="128"
 					src="logo.png"
 					alt="logo"
+					height={128}
 				/>
 			</div>
 			<div

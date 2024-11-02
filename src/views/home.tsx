@@ -61,7 +61,7 @@ export default function Home() {
               </div>
             </div>
             <div className='hide-for-desktop login__right--mobil--img'>
-              <img src={homeMovil} alt='' />
+              <img src={homeMovil} alt='portal movil' />
             </div>
           </div>
           <div className='w-full h-[1px] bg-[var(--gray30)] mt-6 hide-for-desktop'></div>
@@ -211,18 +211,22 @@ export default function Home() {
       <img
         src={blurVerde}
         className='absolute right-0 top-0 select-none hide-for-mobile'
+        alt='blur verde'
       />
       <img
         src={blurVerdeMovil}
         className='absolute right-0 top-0 select-none hide-for-desktop'
+        alt='blur verde movil'
       />
       <img
         src={blurMorado}
         className='absolute left-0 bottom-0 select-none hide-for-mobile'
+        alt='blur morado'
       />
       <img
         src={blurMoradoMovil}
         className='absolute left-0 bottom-0 select-none hide-for-desktop'
+        alt='blur morado movil'
       />
     </main>
   );
