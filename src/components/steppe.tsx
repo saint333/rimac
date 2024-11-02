@@ -1,6 +1,6 @@
 export default function Stepper({ porcentaje }: { porcentaje: number }) {
   return (
-    <div className='stepperHorizontal sticky top-0 z-20 mb-4'>
+    <section className='stepperHorizontal sticky top-0 z-20 mb-4'>
       <div className='container'>
         <div className='flex items-center hide-for-mobile'>
           <div className='flex items-center gap-[16px] mr-[16px]'>
@@ -13,10 +13,22 @@ export default function Stepper({ porcentaje }: { porcentaje: number }) {
           </div>
           <div className='text-lg mr-4'>---</div>
           <div className='flex items-center gap-[16px] mr-[16px] hide-for-mobile'>
-            <div className='rounded-full w-[24px] h-[24px] text-center text-xs grid place-content-center font-bold transition duration-300 border border-[var(--neutrals6)] text-[var(--neutrals6)]'>
+            <div
+              className={`rounded-full w-[24px] h-[24px] text-center text-xs grid place-content-center font-bold transition duration-300 border ${
+                porcentaje == 50
+                  ? "border-[var(--neutrals6)] text-[var(--neutrals6)]"
+                  : "bg-[var(--blueberry600)] text-[var(--white)]"
+              }`}
+            >
               2
             </div>
-            <div className='text-base tracking-[.2px] transition-all duration-300 text-[var(--neutrals6)] opacity-75'>
+            <div
+              className={`text-base tracking-[.2px] transition-all duration-300 ${
+                porcentaje == 50
+                  ? "text-[var(--neutrals6)] opacity-75"
+                  : "text-[var(--neutrals7)] font-bold"
+              }`}
+            >
               Resumen
             </div>
           </div>
@@ -34,12 +46,14 @@ export default function Stepper({ porcentaje }: { porcentaje: number }) {
             </div>
             <div className='w-full h-[6px] rounded-[20px] bg-[var(--neutrals4)]'>
               <div
-                className={`bg-[var(--blueberry600)] h-[6px] transition-all duration-500 rounded-[20px] w-[${porcentaje}%]`}
+                className={`bg-[var(--blueberry600)] h-[6px] transition-all duration-500 rounded-[20px] ${
+                  porcentaje == 50 ? "w-[50%]" : "w-[100%]"
+                }`}
               ></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

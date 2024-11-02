@@ -22,9 +22,9 @@ export default function Detalle() {
   }, [resetAuthService]);
 
   return (
-    <>
+    <main>
       <Stepper porcentaje={100} />
-      <div className='summary'>
+      <section className='summary'>
         <div className='container'>
           <div className='content'>
             <Link to='/' className='w-fit block'>
@@ -81,7 +81,7 @@ export default function Detalle() {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }

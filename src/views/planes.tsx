@@ -21,16 +21,16 @@ export default function Planes() {
     setPlanes([null, null, null]);
     setLoading(true);
     const planes = await PlansData();
-    const planesFilter = planes.filter((plan) => plan.age >= user.age);
+    const planesFilter = planes.filter((plan: PlanCardProps) => plan.age >= user?.age);
     setPlanes(planesFilter);
     setTipoPlan(e.target.value);
     setLoading(false);
   };
 
   return (
-    <>
+    <main>
       <Stepper porcentaje={50} />
-      <div className='plan'>
+      <section className='plan'>
         <div className='container'>
           <div className='content'>
             <Link to='/' className='w-fit block'>
@@ -67,7 +67,7 @@ export default function Planes() {
             )}
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }

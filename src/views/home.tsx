@@ -12,7 +12,7 @@ type Inputs = {
   acceptCommercialCommunications: HTMLInputElement;
 };
 
-function calcularEdad(fechaNacimiento) {
+function calcularEdad(fechaNacimiento: string) {
   const hoy = new Date();
   const fechaNac = new Date(fechaNacimiento);
   let edad = hoy.getFullYear() - fechaNac.getFullYear();
@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <main className='login'>
       <div className='container'>
-        <div className='login__left select-none hide-for-mobile'>
+        <section className='login__left select-none hide-for-mobile'>
           <img
             src='./img/home.png'
             alt='portada rimac'
@@ -69,8 +69,8 @@ export default function Home() {
             height='560'
             loading='lazy'
           />
-        </div>
-        <div className='login__right'>
+        </section>
+        <section className='login__right'>
           <div className='login__right--mobil'>
             <div>
               <div className='tag-promo'>Seguro Salud Flexible</div>
@@ -259,7 +259,7 @@ export default function Home() {
               </div>
             </div>
           </form>
-        </div>
+        </section>
       </div>
       <img
         src='./img/blur-verde.png'

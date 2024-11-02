@@ -56,6 +56,7 @@ export interface PlanCardProps {
   description: string[];
   index?: number;
   tipo?: string;
+  age?: number;
 }
 
 export const PlanCard = ({
@@ -75,11 +76,15 @@ export const PlanCard = ({
     const data = getAuthService();
     setTimeout(() => {
       setLoading(false);
-      setAuthService({
-        ...data,
-        plan: name,
-        price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price,
-      });
+      if (typeof data === 'object' && data !== null) {
+        setAuthService({
+          ...data,
+          plan: name,
+          price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price,
+        });
+      } else {
+        console.error('AuthService data is not an object:', data);
+      }
       navigate("/summary");
     }, 2000);
   };

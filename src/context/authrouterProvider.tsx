@@ -13,13 +13,13 @@ const AuthContext = createContext<{
   user: Record<string, string> | null;
   setAuthService: (authService: Record<string, string>) => void;
   resetAuthService: () => void;
-  getAuthService: () => void;
+  getAuthService: () => Record<string, string>;
 }>({
   isAuthenticated: false,
   user: null,
   setAuthService: () => {},
   resetAuthService: () => {},
-  getAuthService: () => {},
+  getAuthService: () => ({}),
 });
 
 function AuthRouteProvider({ children }: { children: ReactNode }) {
