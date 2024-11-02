@@ -55,21 +55,7 @@ export default function Planes() {
               type='button'
               className='border-2 border-[var(--blueberry600)] rounded-full w-[24px] min-w-[24px] h-[24px] grid place-content-center text-[8px] text-[var(--blueberry600)]'
             >
-              <svg
-                aria-hidden='true'
-                focusable='false'
-                data-prefix='fas'
-                data-icon='chevron-left'
-                className='svg-inline--fa fa-chevron-left '
-                role='img'
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 320 512'
-              >
-                <path
-                  fill='currentColor'
-                  d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z'
-                ></path>
-              </svg>
+               &#10094;
             </button>
             <div className='flex items-center ml-[16px] w-full'>
               <div className='text-[10px] tracking-[.8px] leading-4 mr-[16px] font-black whitespace-nowrap'>

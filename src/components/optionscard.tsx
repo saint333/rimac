@@ -2,6 +2,7 @@ import check from "../assets/img/check.png";
 import plancasa from "../assets/img/plan-casa.png";
 import planclinica from "../assets/img/plan-clinica.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface CardOptionsProps {
   url: string;
@@ -63,11 +64,13 @@ export const PlanCard = ({
 }: PlanCardProps) => {
   const plan = tipo == "para-alguien-mas";
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      navigate("/summary");
     }, 2000);
   };
 
