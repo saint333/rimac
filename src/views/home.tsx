@@ -26,7 +26,7 @@ function calcularEdad(fechaNacimiento) {
 }
 
 export default function Home() {
-  const {setAuthService} = useContext(AuthContext);
+  const { setAuthService } = useContext(AuthContext);
   document.querySelector("header")?.classList.add("header-login");
 
   const {
@@ -44,14 +44,17 @@ export default function Home() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setValidando(true);
     setUserValid(false);
-    const user = await UserData()
+    const user = await UserData();
     setValidando(false);
-    if (data.documentNumber === "87654321" && data.phoneNumber === "987654321") {
+    if (
+      data.documentNumber === "87654321" &&
+      data.phoneNumber === "987654321"
+    ) {
       reset();
-      setAuthService({...data, ...user, age: calcularEdad(user.birthDay)});
+      setAuthService({ ...data, ...user, age: calcularEdad(user.birthDay) });
       navigate("/plans");
-    }else{
-      setUserValid(true)
+    } else {
+      setUserValid(true);
     }
   };
 
@@ -59,7 +62,13 @@ export default function Home() {
     <main className='login'>
       <div className='container'>
         <div className='login__left select-none hide-for-mobile'>
-          <img src='./img/home.png' alt='portada rimac' width='480' height='560' loading="lazy" />
+          <img
+            src='./img/home.png'
+            alt='portada rimac'
+            width='480'
+            height='560'
+            loading='lazy'
+          />
         </div>
         <div className='login__right'>
           <div className='login__right--mobil'>
@@ -81,7 +90,7 @@ export default function Home() {
                 alt='portal movil'
                 width='136'
                 height='160'
-                loading="lazy"
+                loading='lazy'
               />
             </div>
           </div>
@@ -168,7 +177,11 @@ export default function Home() {
                 *El celular ingresado no es válido
               </div>
             )}
-            {userValid && <div className="text-[var(--red5)] text-[14px] leading-4 mt-4">El usuario ingresado no existe</div>}
+            {userValid && (
+              <div className='text-[var(--red5)] text-[14px] leading-4 mt-4'>
+                El usuario ingresado no existe
+              </div>
+            )}
             <div className='mt-6'>
               <label
                 className={`check__label ${validando && "disabled"} ${
@@ -184,7 +197,12 @@ export default function Home() {
                 />
 
                 <div className='check__label--box'>
-                  <img src='./img/check.png' className='i' alt='Check Box' loading="lazy" />
+                  <img
+                    src='./img/check.png'
+                    className='i'
+                    alt='Check Box'
+                    loading='lazy'
+                  />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política de Privacidad
@@ -205,7 +223,12 @@ export default function Home() {
                   })}
                 />
                 <div className='check__label--box'>
-                  <img src='./img/check.png' className='i' alt='Check Box' loading="lazy" />
+                  <img
+                    src='./img/check.png'
+                    className='i'
+                    alt='Check Box'
+                    loading='lazy'
+                  />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política Comunicaciones Comerciales
@@ -244,7 +267,7 @@ export default function Home() {
         alt='blur verde'
         width='432'
         height='768'
-        loading="lazy"
+        loading='lazy'
       />
       <img
         src='./img/blur-verde-movil.png'
@@ -252,7 +275,7 @@ export default function Home() {
         alt='blur verde movil'
         width='352'
         height='304'
-        loading="lazy"
+        loading='lazy'
       />
       <img
         src='./img/blur-morado.png'
@@ -260,7 +283,7 @@ export default function Home() {
         alt='blur morado'
         width='432'
         height='768'
-        loading="lazy"
+        loading='lazy'
       />
       <img
         src='./img/blur-morado-movil.png'
@@ -268,7 +291,7 @@ export default function Home() {
         alt='blur morado movil'
         width='256'
         height='304'
-        loading="lazy"
+        loading='lazy'
       />
     </main>
   );

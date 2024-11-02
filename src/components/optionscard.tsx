@@ -31,9 +31,14 @@ export const CardOptions: React.FC<CardOptionsProps> = ({
       />
       <label htmlFor={id} className='check__label--info'>
         <div className='check__label--box'>
-          <img src='./img/check.png' className='i select-none' alt='Check Box' loading="lazy" />
+          <img
+            src='./img/check.png'
+            className='i select-none'
+            alt='Check Box'
+            loading='lazy'
+          />
         </div>
-        <img src={url} className='select-none' alt='icon' loading="lazy" />
+        <img src={url} className='select-none' alt='icon' loading='lazy' />
         <div className='text-xl font-black tracking-[-.2px] text-[var(--neutrals7)] mt-[8px]'>
           {title}
         </div>
@@ -63,14 +68,18 @@ export const PlanCard = ({
   const plan = tipo == "para-alguien-mas";
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const {setAuthService, getAuthService} = useContext(AuthContext);
+  const { setAuthService, getAuthService } = useContext(AuthContext);
 
   const handleClick = () => {
     setLoading(true);
     const data = getAuthService();
     setTimeout(() => {
       setLoading(false);
-      setAuthService({ ...data, plan: name, price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price });
+      setAuthService({
+        ...data,
+        plan: name,
+        price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price,
+      });
       navigate("/summary");
     }, 2000);
   };
@@ -100,7 +109,10 @@ export const PlanCard = ({
             al mes
           </div>
         </div>
-        <img src={index == 1 ? './img/plan-clinica.png' : './img/plan-casa.png'} alt={name} />
+        <img
+          src={index == 1 ? "./img/plan-clinica.png" : "./img/plan-casa.png"}
+          alt={name}
+        />
       </div>
       <div className='w-full h-[1px] bg-[var(--neutrals4)] my-[24px]'></div>
       <ul className='mb-[40px] flex flex-col gap-[24px]'>
@@ -114,13 +126,17 @@ export const PlanCard = ({
         ))}
       </ul>
       <button
-        className={`flex items-center justify-center btn font-br-sonoma-bold red  mt-auto !w-auto font-bold ${loading && "loading"}`}
+        className={`flex items-center justify-center btn font-br-sonoma-bold red  mt-auto !w-auto font-bold ${
+          loading && "loading"
+        }`}
         disabled={loading}
         onClick={handleClick}
       >
-        {loading && <div className='flex items-center justify-center mr-3'>
-          <div className='w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin'></div>
-        </div>}
+        {loading && (
+          <div className='flex items-center justify-center mr-3'>
+            <div className='w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin'></div>
+          </div>
+        )}
         {loading ? "Cotizando ..." : "Seleccionar plan"}
       </button>
     </div>

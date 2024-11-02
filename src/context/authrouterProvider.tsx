@@ -1,4 +1,11 @@
-import { createContext, useCallback, useState, useEffect, useMemo, ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useState,
+  useEffect,
+  useMemo,
+  ReactNode,
+} from "react";
 import SplashScreen from "../components/splashscreen";
 
 const AuthContext = createContext<{
@@ -21,7 +28,7 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<null | Record<string, string>>(null);
 
   const getAuthService = useCallback(() => {
-    return JSON.parse(localStorage.getItem("authService") || '{}');
+    return JSON.parse(localStorage.getItem("authService") || "{}");
   }, []);
 
   const setAuthService = useCallback((authService: Record<string, string>) => {
@@ -44,14 +51,14 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
       user,
       setAuthService,
       resetAuthService,
-      getAuthService
+      getAuthService,
     }),
     [isAuthenticated, user, setAuthService, resetAuthService, getAuthService]
   );
 
   useEffect(() => {
     const authService = getAuthService();
-    console.log("🚀 ~ useEffect ~ authService:", authService)
+    console.log("🚀 ~ useEffect ~ authService:", authService);
     if (Object.values(authService).length !== 0) {
       setIsAuthenticated(true);
       setUser(authService);
@@ -67,9 +74,7 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={combinedAuth}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={combinedAuth}>{children}</AuthContext.Provider>
   );
 }
 

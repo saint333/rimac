@@ -9,14 +9,14 @@ export default function Footer() {
             width='85'
             alt='logo rimac'
             height='41'
-            loading="lazy"
+            loading='lazy'
           />
           <img
             src='./img/logo-footer-movil.png'
             className='hide-for-desktop m-auto'
             width='138'
             alt='logo rimac'
-            loading="lazy"
+            loading='lazy'
             height='20'
           />
         </div>

@@ -8,4 +8,4 @@ export default async function UserData() {
   } catch (error) {
     console.error(error);
   }
-};
+}
