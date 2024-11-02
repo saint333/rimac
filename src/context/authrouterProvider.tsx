@@ -58,7 +58,6 @@ function AuthRouteProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const authService = getAuthService();
-    console.log("🚀 ~ useEffect ~ authService:", authService);
     if (Object.values(authService).length !== 0) {
       setIsAuthenticated(true);
       setUser(authService);

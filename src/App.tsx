@@ -9,7 +9,6 @@ import { AuthContext } from "./context/authrouterProvider";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
-  console.log("🚀 ~ App ~ isAuthenticated:", isAuthenticated);
 
   return (
     <>
