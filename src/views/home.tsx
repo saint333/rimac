@@ -9,7 +9,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 type Inputs = {
   documentType: HTMLSelectElement;
   documentNumber: HTMLInputElement;
@@ -38,13 +37,13 @@ export default function Home() {
       reset();
       navigate("/plans");
     }, 3000);
-  }
+  };
 
   return (
     <main className='login'>
       <div className='container'>
         <div className='login__left select-none hide-for-mobile'>
-          <img src={home} alt='portada rimac' />
+          <img src={home} alt='portada rimac' width='480' height='560' />
         </div>
         <div className='login__right'>
           <div className='login__right--mobil'>
@@ -61,7 +60,12 @@ export default function Home() {
               </div>
             </div>
             <div className='hide-for-desktop login__right--mobil--img'>
-              <img src={homeMovil} alt='portal movil' />
+              <img
+                src={homeMovil}
+                alt='portal movil'
+                width='136'
+                height='160'
+              />
             </div>
           </div>
           <div className='w-full h-[1px] bg-[var(--gray30)] mt-6 hide-for-desktop'></div>
@@ -71,14 +75,20 @@ export default function Home() {
               asesoría. 100% online.
             </h2>
             <div className='inputSelect'>
-              <div className={`inputSelect--select flex-col !gap-0 !items-start ${validando && "disabled"}`}>
-                <label htmlFor="documentType" className='before pl-[15px]'>Documento</label>
+              <div
+                className={`inputSelect--select flex-col !gap-0 !items-start ${
+                  validando && "disabled"
+                }`}
+              >
+                <label htmlFor='documentType' className='before pl-[15px]'>
+                  Documento
+                </label>
                 <select
                   id='documentType'
                   name='documentType'
                   {...register("documentType", { required: true })}
                   disabled={validando}
-                  className="!py-0"
+                  className='!py-0'
                 >
                   <option value='DNI'>DNI</option>
                   <option value='RUC'>RUC</option>
@@ -214,21 +224,29 @@ export default function Home() {
         src={blurVerde}
         className='absolute right-0 top-0 select-none hide-for-mobile'
         alt='blur verde'
+        width='432'
+        height='768'
       />
       <img
         src={blurVerdeMovil}
         className='absolute right-0 top-0 select-none hide-for-desktop'
         alt='blur verde movil'
+        width='352'
+        height='304'
       />
       <img
         src={blurMorado}
         className='absolute left-0 bottom-0 select-none hide-for-mobile'
         alt='blur morado'
+        width='432'
+        height='768'
       />
       <img
         src={blurMoradoMovil}
         className='absolute left-0 bottom-0 select-none hide-for-desktop'
         alt='blur morado movil'
+        width='256'
+        height='304'
       />
     </main>
   );
