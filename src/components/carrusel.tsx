@@ -26,10 +26,10 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
 
   useEffect(() => {
     setCurrentIndex(0);
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % planes.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   setCurrentIndex((prevIndex) => (prevIndex + 1) % planes.length);
+    // }, 5000);
+    // return () => clearInterval(interval);
   }, [planes.length]);
 
   const goToPrevious = () => {
