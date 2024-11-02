@@ -72,6 +72,7 @@ export default function Home() {
             </h2>
             <div className='inputSelect'>
               <div className={`inputSelect--select ${validando && "disabled"}`}>
+                <label htmlFor="documentType"></label>
                 <select
                   id='documentType'
                   name='documentType'
