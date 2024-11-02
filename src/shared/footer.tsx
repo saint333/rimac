@@ -12,12 +12,14 @@ export default function Footer() {
             width='85'
             alt='logo rimac'
             height='41'
+            loading="lazy"
           />
           <img
             src={logoFooterMovil}
             className='hide-for-desktop m-auto'
             width='138'
             alt='logo rimac'
+            loading="lazy"
           />
         </div>
         <div className='footer__right'>

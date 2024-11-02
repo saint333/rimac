@@ -43,7 +43,7 @@ export default function Home() {
     <main className='login'>
       <div className='container'>
         <div className='login__left select-none hide-for-mobile'>
-          <img src={home} alt='portada rimac' width='480' height='560' />
+          <img src={home} alt='portada rimac' width='480' height='560' loading="lazy" />
         </div>
         <div className='login__right'>
           <div className='login__right--mobil'>
@@ -65,6 +65,7 @@ export default function Home() {
                 alt='portal movil'
                 width='136'
                 height='160'
+                loading="lazy"
               />
             </div>
           </div>
@@ -166,7 +167,7 @@ export default function Home() {
                 />
 
                 <div className='check__label--box'>
-                  <img src={check} className='i' alt='Check Box' />
+                  <img src={check} className='i' alt='Check Box' loading="lazy" />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política de Privacidad
@@ -187,7 +188,7 @@ export default function Home() {
                   })}
                 />
                 <div className='check__label--box'>
-                  <img src={check} className='i' alt='Check Box' />
+                  <img src={check} className='i' alt='Check Box' loading="lazy" />
                 </div>
                 <div className='paragraph font-br-sonoma-regular text-[12px] leading-[20px] tracking-[.1px] text-[#0A051E]'>
                   Acepto la Política Comunicaciones Comerciales
@@ -226,6 +227,7 @@ export default function Home() {
         alt='blur verde'
         width='432'
         height='768'
+        loading="lazy"
       />
       <img
         src={blurVerdeMovil}
@@ -233,6 +235,7 @@ export default function Home() {
         alt='blur verde movil'
         width='352'
         height='304'
+        loading="lazy"
       />
       <img
         src={blurMorado}
@@ -240,6 +243,7 @@ export default function Home() {
         alt='blur morado'
         width='432'
         height='768'
+        loading="lazy"
       />
       <img
         src={blurMoradoMovil}
@@ -247,6 +251,7 @@ export default function Home() {
         alt='blur morado movil'
         width='256'
         height='304'
+        loading="lazy"
       />
     </main>
   );

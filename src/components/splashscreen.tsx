@@ -9,6 +9,7 @@ function SplashScreen() {
 					src="logo.png"
 					alt="logo"
 					height={128}
+					loading="lazy"
 				/>
 			</div>
 			<div

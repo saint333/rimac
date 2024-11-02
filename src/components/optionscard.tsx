@@ -33,9 +33,9 @@ export const CardOptions: React.FC<CardOptionsProps> = ({
       />
       <label htmlFor={id} className='check__label--info'>
         <div className='check__label--box'>
-          <img src={check} className='i select-none' alt='Check Box' />
+          <img src={check} className='i select-none' alt='Check Box' loading="lazy" />
         </div>
-        <img src={url} className='select-none' alt='icon' />
+        <img src={url} className='select-none' alt='icon' loading="lazy" />
         <div className='text-xl font-black tracking-[-.2px] text-[var(--neutrals7)] mt-[8px]'>
           {title}
         </div>

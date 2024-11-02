@@ -13,6 +13,7 @@ export default function Header() {
             className='select-none'
             alt='logo rimac'
             height='35'
+            loading="lazy"
           />
         </div>
         <div className='header__right'>
@@ -26,7 +27,7 @@ export default function Header() {
             href='tel:+0114116001'
             className='flex items-center gap-x-2 text-[16px] leading-5 hover:underline active:text-[var(--neutrals6)]'
           >
-            <img src={telefono} alt='icono de celular' width='20' heigth='20' />
+            <img src={telefono} alt='icono de celular' width='20' heigth='20' loading="lazy" />
             <div className='font-br-sonoma-bold tracking-[.4px]'>
               (01) 411 6001
             </div>
