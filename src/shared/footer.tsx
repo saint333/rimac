@@ -11,6 +11,7 @@ export default function Footer() {
             className='hide-for-mobile'
             width='85'
             alt='logo rimac'
+            height='41'
           />
           <img
             src={logoFooterMovil}
