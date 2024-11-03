@@ -91,7 +91,7 @@ li {
 
 @font-face {
   font-family: br-sonoma-black;
-  src: url(./fonts/BRSonoma-Black-BF654c4525506bf.otf) format("opentype");
+  src: url(fonts/BRSonoma-Black-BF654c4525506bf.otf) format("opentype");
   font-display: swap
 }
 
@@ -101,7 +101,7 @@ li {
 
 @font-face {
   font-family: br-sonoma-bold;
-  src: url(./fonts/BRSonoma-Bold-BF654c4526823f5.otf) format("opentype");
+  src: url(fonts/BRSonoma-Bold-BF654c4526823f5.otf) format("opentype");
   font-display: swap
 }
 
@@ -111,7 +111,7 @@ li {
 
 @font-face {
   font-family: br-sonoma-light;
-  src: url(./fonts/BRSonoma-Light-BF654c452608e0f.otf) format("opentype");
+  src: url(fonts/BRSonoma-Light-BF654c452608e0f.otf) format("opentype");
   font-display: swap
 }
 
@@ -121,7 +121,7 @@ li {
 
 @font-face {
   font-family: br-sonoma-medium;
-  src: url(./fonts/BRSonoma-Medium-BF654c45266edd1.otf) format("opentype");
+  src: url(fonts/BRSonoma-Medium-BF654c45266edd1.otf) format("opentype");
   font-display: swap
 }
 
@@ -131,7 +131,7 @@ li {
 
 @font-face {
   font-family: br-sonoma-regular;
-  src: url(./fonts/BRSonoma-Regular-BF654c45266c042.otf) format("opentype");
+  src: url(fonts/BRSonoma-Regular-BF654c45266c042.otf) format("opentype");
   font-display: swap
 }
 
