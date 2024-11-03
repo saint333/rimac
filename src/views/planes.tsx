@@ -6,6 +6,7 @@ import { PlansData } from "../services/plans";
 import Carousel from "../components/carrusel";
 import { AuthContext } from "../context/authrouterProvider";
 import Stepper from "../components/steppe";
+import "../style/planes.css";
 
 export default function Planes() {
   document.querySelector(".header-login")?.classList.add("header");

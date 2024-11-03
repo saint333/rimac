@@ -1,0 +1,42 @@
+.header {
+  background-color: var(--white);
+  z-index: 11
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 23px
+}
+
+@media (min-width: 768px) {
+  .header nav {
+      height:64px
+  }
+}
+
+@media (max-width: 499.9375px) {
+  .header__logo img {
+      width:65px;
+      min-width: 65px
+  }
+}
+
+.header-login {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 11
+}
+
+.header-login .header {
+  background-color: inherit
+}

@@ -1,0 +1,40 @@
+.summary {
+  padding: 64px 0 112px
+}
+
+.summary .content {
+  padding: 0 6rem
+}
+
+.summary .content__info {
+  margin-top: 32px
+}
+
+.summary .content__block {
+  margin-top: 48px
+}
+
+@media (max-width: 767.9375px) {
+  .summary {
+      padding:33px 0 80px
+  }
+
+  .summary .content {
+      padding: 0
+  }
+
+  .summary .content__info {
+      text-align: center;
+      margin-top: 0
+  }
+
+  .summary .content__info h2 {
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -.6px
+  }
+
+  .summary .content__info__block {
+      margin-top: 40px
+  }
+}

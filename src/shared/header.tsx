@@ -1,5 +1,4 @@
-// import logoRimac from "../assets/img/logo.png";
-// import telefono from "../assets/img/celular.png";
+import '../style/header.css';
 
 export default function Header() {
   return (

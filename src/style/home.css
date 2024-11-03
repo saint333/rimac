@@ -1,0 +1,230 @@
+.inputSelect {
+  width: 100%;
+  display: flex
+}
+
+.inputSelect--select,.inputSelect--input {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  height: 56px;
+  color: var(--gray1);
+  font-family: var(--br-sonoma-regular),sans-serif
+}
+
+.inputSelect--select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid var(--gray60);
+  background-color: var(--white);
+  border-right: 0;
+  border-radius: 8px 0 0 8px;
+  letter-spacing: .2px;
+  gap: 11.8px
+}
+
+.inputSelect--select.disabled {
+  background-color: #ddd
+}
+
+.inputSelect--select select {
+  min-width: 140px;
+  height: 100%;
+  padding: 15px 40.28px 15px 16px;
+  cursor: pointer;
+  font-size: inherit;
+  color: inherit;
+  z-index: 1
+}
+
+.inputSelect--select select:disabled {
+  cursor: not-allowed
+}
+
+.inputSelect--select .i {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  margin: auto;
+  color: var(--red)
+}
+
+.inputSelect .input__login,.inputSelect input {
+  border-radius: 0 8px 8px 0!important
+}
+
+.input__login {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 56px
+}
+
+.input__login input {
+  width: 100%;
+  height: 56px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 20px 16px 4px;
+  border-radius: 8px;
+  color: var(--gray1);
+  font-family: var(--br-sonoma-regular);
+  box-shadow: 0 0 0 1px inset var(--gray60);
+  background-color: transparent;
+  transition: all .2s ease
+}
+
+.input__login input:disabled {
+  cursor: not-allowed;
+  background-color: #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none
+}
+
+.input__login input:focus {
+  box-shadow: 0 0 0 2px inset var(--gray1);
+  background-color: var(--white)
+}
+
+.input__login input:focus+.before .paragraph {
+  color: var(--gray1)
+}
+
+.input__login input:not(:-moz-placeholder-shown)+.before .paragraph {
+  top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  transform: translateY(0)
+}
+
+.input__login input:focus+.before .paragraph,.input__login input:not(:placeholder-shown)+.before .paragraph {
+  top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  transform: translateY(0)
+}
+
+.input__login .before {
+  cursor: text
+}
+
+.input__login .paragraph {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  transform: translateY(-50%);
+  font-weight: 400;
+  color: var(--gray60);
+  transition: all .3s ease
+}
+
+.input__login.disabled .paragraph {
+  cursor: not-allowed
+}
+
+.input__login.error input {
+  box-shadow: 0 0 0 1px inset var(--red5)
+}
+
+.input__login.error input:focus {
+  box-shadow: 0 0 0 2px inset var(--red5)
+}
+
+.login {
+  position: relative;
+  padding: 7rem 0 6rem;
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 106px);
+  background-color: var(--gray10);
+  overflow: hidden
+}
+
+.login .container {
+  display: flex;
+  align-items: center
+}
+
+.login__left {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  overflow: hidden
+}
+
+.login__right {
+  width: 100%;
+  max-width: 352px;
+  margin-left: 128px
+}
+
+.login__right .info {
+  margin-top: 16px
+}
+
+.login .block-btn {
+  margin-top: 24px
+}
+
+@media (max-width: 1177.9375px) {
+  .login__right {
+      margin-left:70px
+  }
+}
+
+@media (max-width: 767.9375px) {
+  .login {
+      padding:4rem 0 96px;
+      min-height: calc(100vh - 153px)
+  }
+
+  .login .container {
+      align-items: initial
+  }
+
+  .login__right {
+      margin-left: 0;
+      max-width: 100%
+  }
+
+  .login__right .info {
+      margin-top: 8px
+  }
+
+  .login__right--mobil {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between
+  }
+
+  .login__right--mobil--img {
+      width: 136px;
+      min-width: 136px;
+      border-radius: 20px;
+      overflow: hidden
+  }
+
+  .login__right--mobil h1 {
+      font-size: 28px;
+      line-height: 36px
+  }
+
+  .login .block-btn {
+      margin-top: 36px
+  }
+
+  .login .btn {
+      width: 100%
+  }
+}

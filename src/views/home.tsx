@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authrouterProvider";
 import UserData from "../services/user";
+import "../style/home.css";
 
 type Inputs = {
   documentType: HTMLSelectElement;

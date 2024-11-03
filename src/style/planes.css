@@ -1,0 +1,122 @@
+.planInfo {
+  display: grid;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 544px;
+  grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+  grid-gap: 32px;
+  gap: 32px
+}
+
+.planInfo .check__label {
+  cursor: auto;
+  cursor: initial
+}
+
+.planInfo .check__label input:checked+.check__label--info .check__label--box {
+  background-color: var(--success);
+  box-shadow: 0 0 0 1px inset var(--success)
+}
+
+.planInfo .check__label input:checked+.check__label--info {
+  box-shadow: 0 0 0 3px inset var(--gray1)
+}
+
+.planInfo .check__label--info {
+  cursor: pointer;
+  border-radius: 24px;
+  box-shadow: 0 1px 32px #aeacf359;
+  padding: 16px 24px 40px;
+  display: block
+}
+
+.planInfo .check__label--info:hover .check__label--box {
+  box-shadow: 0 0 0 1px inset var(--gray1)
+}
+
+.planInfo .check__label--box {
+  margin-left: auto;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px inset var(--neutrals5)
+}
+
+@media (max-width: 767.9375px) {
+  .planInfo {
+      max-width:100%;
+      grid-template-columns: 1fr;
+      gap: 24px
+  }
+
+  .planInfo .check__label,.planInfo .check__label--info {
+      width: 100%;
+      max-width: 100%
+  }
+}
+
+.plan {
+  padding: 40px 0 80px
+}
+
+.plan .content {
+  padding: 0 6rem
+}
+
+.plan .content__info {
+  margin-top: 56px;
+  text-align: center
+}
+
+.plan .planPrice {
+  margin-top: 20px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+@media (max-width: 767.9375px) {
+  .plan {
+      padding-top:0
+  }
+
+  .plan .content {
+      padding: 0
+  }
+
+  .plan .content__info {
+      margin-top: 32px;
+      text-align: left;
+      text-align: initial
+  }
+
+  .plan .content__info>div {
+      margin: 0;
+      margin: initial
+  }
+
+  .plan .content__info h2 {
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -.2px
+  }
+
+  .plan .recommended {
+      top: 2rem
+  }
+
+  .plan .planPrice {
+      margin-top: 40px
+  }
+}
+
+@media (max-width: 768px) {
+  .plan .planPrice {
+      flex-wrap:nowrap;
+      overflow: auto;
+      padding: 24px 30px 40px 26px;
+      margin: 16px -24px
+  }
+}
