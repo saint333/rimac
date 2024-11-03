@@ -55,7 +55,7 @@ export interface PlanCardProps {
   price: string;
   description: string[];
   index?: number;
-  tipo?: string;
+  type?: string;
   age?: number;
 }
 
@@ -64,9 +64,9 @@ export const PlanCard = ({
   price,
   description,
   index,
-  tipo,
+  type,
 }: PlanCardProps) => {
-  const plan = tipo == "para-alguien-mas";
+  const plan = type == "para-alguien-mas";
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setAuthService, getAuthService } = useContext(AuthContext);

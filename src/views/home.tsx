@@ -13,17 +13,17 @@ type Inputs = {
   acceptCommercialCommunications: HTMLInputElement;
 };
 
-function calcularEdad(fechaNacimiento: string) {
-  const hoy = new Date();
-  const fechaNac = new Date(fechaNacimiento);
-  let edad = hoy.getFullYear() - fechaNac.getFullYear();
-  const mes = hoy.getMonth() - fechaNac.getMonth();
+function calculateAge(dateBirth: string) {
+  const today = new Date();
+  const fechaNac = new Date(dateBirth);
+  let age = today.getFullYear() - fechaNac.getFullYear();
+  const month = today.getMonth() - fechaNac.getMonth();
 
-  if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
-    edad--;
+  if (month < 0 || (month === 0 && today.getDate() < fechaNac.getDate())) {
+    age--;
   }
 
-  return edad;
+  return age;
 }
 
 export default function Home() {
@@ -37,22 +37,22 @@ export default function Home() {
     reset,
   } = useForm<Inputs>();
 
-  const [validando, setValidando] = useState(false);
+  const [validating, setValidating] = useState(false);
   const [userValid, setUserValid] = useState(false);
 
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setValidando(true);
+    setValidating(true);
     setUserValid(false);
     const user = await UserData();
-    setValidando(false);
+    setValidating(false);
     if (
       data.documentNumber === "87654321" &&
       data.phoneNumber === "987654321"
     ) {
       reset();
-      setAuthService({ ...data, ...user, age: calcularEdad(user.birthDay) });
+      setAuthService({ ...data, ...user, age: calculateAge(user.birthDay) });
       navigate("/plans");
     } else {
       setUserValid(true);
@@ -104,7 +104,7 @@ export default function Home() {
             <div className='inputSelect'>
               <div
                 className={`inputSelect--select flex-col !gap-0 !items-start ${
-                  validando && "disabled"
+                  validating && "disabled"
                 }`}
               >
                 <label htmlFor='documentType' className='before pl-[15px]'>
@@ -114,7 +114,7 @@ export default function Home() {
                   id='documentType'
                   name='documentType'
                   {...register("documentType", { required: true })}
-                  disabled={validando}
+                  disabled={validating}
                   className='!py-0'
                 >
                   <option value='DNI'>DNI</option>
@@ -122,7 +122,7 @@ export default function Home() {
                 </select>
               </div>
               <div
-                className={`input__login w-full ${validando && "disabled"} ${
+                className={`input__login w-full ${validating && "disabled"} ${
                   errors.documentNumber && "error"
                 }`}
               >
@@ -131,7 +131,7 @@ export default function Home() {
                   id='document'
                   name='documentNumber'
                   placeholder=' '
-                  disabled={validando}
+                  disabled={validating}
                   maxLength={8}
                   {...register("documentNumber", {
                     required: true,
@@ -151,7 +151,7 @@ export default function Home() {
               </div>
             )}
             <div
-              className={`input__login mt-4 ${validando && "disabled"} ${
+              className={`input__login mt-4 ${validating && "disabled"} ${
                 errors.phoneNumber && "error"
               }`}
             >
@@ -160,7 +160,7 @@ export default function Home() {
                 id='cel'
                 name='phoneNumber'
                 placeholder=' '
-                disabled={validando}
+                disabled={validating}
                 maxLength={9}
                 {...register("phoneNumber", {
                   required: true,
@@ -185,7 +185,7 @@ export default function Home() {
             )}
             <div className='mt-6'>
               <label
-                className={`check__label ${validando && "disabled"} ${
+                className={`check__label ${validating && "disabled"} ${
                   errors.acceptPrivacyPolicy && "error"
                 }`}
               >
@@ -193,7 +193,7 @@ export default function Home() {
                   type='checkbox'
                   name='acceptPrivacyPolicy'
                   hidden
-                  disabled={validando}
+                  disabled={validating}
                   {...register("acceptPrivacyPolicy", { required: true })}
                 />
 
@@ -210,7 +210,7 @@ export default function Home() {
                 </div>
               </label>
               <label
-                className={`check__label mt-4 ${validando && "disabled"} ${
+                className={`check__label mt-4 ${validating && "disabled"} ${
                   errors.acceptCommercialCommunications && "error"
                 }`}
               >
@@ -218,7 +218,7 @@ export default function Home() {
                   type='checkbox'
                   name='acceptCommercialCommunications'
                   hidden
-                  disabled={validando}
+                  disabled={validating}
                   {...register("acceptCommercialCommunications", {
                     required: true,
                   })}
@@ -242,21 +242,19 @@ export default function Home() {
                 Aplican Términos y Condiciones.
               </button>
               <div className='block-btn '>
-                {!validando ? (
-                  <button className='flex items-center justify-center btn font-br-sonoma-bold bg-[var(--gray1)] duration-300 lg'>
-                    Cotiza aqui
-                  </button>
-                ) : (
-                  <button
-                    className='flex items-center justify-center btn font-br-sonoma-bold bg-[var(--gray1)] duration-300 lg loading'
-                    disabled
-                  >
+                <button
+                  className={`flex items-center justify-center btn font-br-sonoma-bold bg-[var(--gray1)] duration-300 lg ${
+                    validating && "loading"
+                  }`}
+                  disabled={validating}
+                >
+                  {validating && (
                     <div className='flex items-center justify-center mr-3'>
                       <div className='w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin'></div>
                     </div>
-                    Cotizando...
-                  </button>
-                )}
+                  )}
+                  {!validating ? "Cotiza aqui" : "Cotizando..."}
+                </button>
               </div>
             </div>
           </form>

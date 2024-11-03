@@ -29,7 +29,7 @@ export default function Header() {
               <img
                 src='./img/celular.png'
                 width='20'
-                heigth='20'
+                height='20'
                 alt='icono de celular'
                 loading='lazy'
               />

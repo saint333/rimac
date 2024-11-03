@@ -1,8 +1,8 @@
 import Footer from "./shared/footer";
 import Header from "./shared/header";
 import Home from "./views/home";
-import Planes from "./views/planes";
-import Detalle from "./views/detalle";
+import Planes from "./views/plans";
+import Detalle from "./views/summary";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/authrouterProvider";

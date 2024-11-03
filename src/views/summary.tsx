@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authrouterProvider";
-import Stepper from "../components/steppe";
+import Stepper from "../components/stepper";
 import "../style/summary.css";
 
 export default function Detalle() {

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { PlanCard, PlanCardProps } from "./optionscard";
 
 interface CarouselProps {
-  planes: PlanCardProps[] | null[];
+  plans: PlanCardProps[] | null[];
   loading: boolean;
-  tipo: string;
+  type: string;
 }
 
-const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
+const Carousel = ({ plans, loading, type }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [matches, setMatches] = useState<boolean>(
     window.matchMedia("(max-width: 768px)").matches
@@ -30,15 +30,15 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
     //   setCurrentIndex((prevIndex) => (prevIndex + 1) % planes.length);
     // }, 5000);
     // return () => clearInterval(interval);
-  }, [planes.length]);
+  }, [plans.length]);
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? planes.length - 1 : currentIndex - 1;
+    const newIndex = currentIndex === 0 ? plans.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const goToNext = () => {
-    const newIndex = currentIndex === planes.length - 1 ? 0 : currentIndex + 1;
+    const newIndex = currentIndex === plans.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
 
@@ -50,11 +50,11 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
           style={{
             transform: `translateX(-${
               currentIndex *
-              (planes.length <= 3 ? (matches ? 103 : 0) : matches ? 110 : 19)
+              (plans.length <= 3 ? (matches ? 103 : 0) : matches ? 110 : 19)
             }%)`,
           }}
         >
-          {planes.map((plan, index) => (
+          {plans.map((plan, index) => (
             <div key={index} className='relative w-full md:w-fit flex-shrink-0'>
               {loading ? (
                 <div
@@ -62,7 +62,7 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
                   key={index}
                 ></div>
               ) : plan ? (
-                <PlanCard key={index} {...plan} index={index} tipo={tipo} />
+                <PlanCard key={index} {...plan} index={index} type={type} />
               ) : null}
             </div>
           ))}
@@ -81,7 +81,7 @@ const Carousel = ({ planes, loading, tipo }: CarouselProps) => {
           &#10094;
         </button>
         <div className=''>
-          {currentIndex + 1} / {planes.length}
+          {currentIndex + 1} / {plans.length}
         </div>
         <button
           onClick={goToNext}

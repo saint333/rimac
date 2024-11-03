@@ -5,32 +5,32 @@ import { useState, useContext } from "react";
 import { PlansData } from "../services/plans";
 import Carousel from "../components/carrusel";
 import { AuthContext } from "../context/authrouterProvider";
-import Stepper from "../components/steppe";
-import "../style/planes.css";
+import Stepper from "../components/stepper";
+import "../style/plans.css";
 
 export default function Planes() {
   document.querySelector(".header-login")?.classList.add("header");
   document.querySelector(".header-login")?.classList.remove("header-login");
   const [loading, setLoading] = useState(false);
-  const [planes, setPlanes] = useState<PlanCardProps[] | null[]>([]);
-  const [tipoPlan, setTipoPlan] = useState<string>("");
+  const [plans, setPlans] = useState<PlanCardProps[] | null[]>([]);
+  const [typePlan, setTypePlan] = useState<string>("");
   const { user } = useContext(AuthContext);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
-    setPlanes([null, null, null]);
+    setPlans([null, null, null]);
     setLoading(true);
-    const planes = await PlansData();
-    const planesFilter = planes.filter((plan: PlanCardProps) => plan.age >= user?.age);
-    setPlanes(planesFilter);
-    setTipoPlan(e.target.value);
+    const plans = await PlansData();
+    const planesFilter = plans.filter((plan: PlanCardProps) => plan.age !== undefined && plan.age >= Number(user?.age));
+    setPlans(planesFilter);
+    setTypePlan(e.target.value);
     setLoading(false);
   };
 
   return (
     <main>
-      <Stepper porcentaje={50} />
+      <Stepper percentage={50} />
       <section className='plan'>
         <div className='container'>
           <div className='content'>
@@ -45,7 +45,7 @@ export default function Planes() {
             <div className='content__info'>
               <div className='w-full max-w-[544px] ml-auto mr-auto'>
                 <h2 className='font-bold text-[40px] tracking-[-.6px] leading-[48px]'>
-                  {user.name} ¿Para quién deseas cotizar?
+                  {user?.name} ¿Para quién deseas cotizar?
                 </h2>
                 <h3 className='text-[16px] tracking-[.1px] leading-7 text-[var(--neutrals7)] mt-[8px]'>
                   Selecciona la opción que se ajuste más a tus necesidades.
@@ -61,9 +61,9 @@ export default function Planes() {
                 />
               ))}
             </div>
-            {planes.length > 0 && (
+            {plans.length > 0 && (
               <div className='planPrice transition-opacity opacity-100 duration-500'>
-                <Carousel planes={planes} loading={loading} tipo={tipoPlan} />
+                <Carousel plans={plans} loading={loading} type={typePlan} />
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 import '../style/stepper.css';
 
-export default function Stepper({ porcentaje }: { porcentaje: number }) {
+export default function Stepper({ percentage }: { percentage: number }) {
   return (
     <section className='stepperHorizontal sticky top-0 z-20 mb-4'>
       <div className='container'>
@@ -17,7 +17,7 @@ export default function Stepper({ porcentaje }: { porcentaje: number }) {
           <div className='flex items-center gap-[16px] mr-[16px] hide-for-mobile'>
             <div
               className={`rounded-full w-[24px] h-[24px] text-center text-xs grid place-content-center font-bold transition duration-300 border ${
-                porcentaje == 50
+                percentage == 50
                   ? "border-[var(--neutrals6)] text-[var(--neutrals6)]"
                   : "bg-[var(--blueberry600)] text-[var(--white)]"
               }`}
@@ -26,7 +26,7 @@ export default function Stepper({ porcentaje }: { porcentaje: number }) {
             </div>
             <div
               className={`text-base tracking-[.2px] transition-all duration-300 ${
-                porcentaje == 50
+                percentage == 50
                   ? "text-[var(--neutrals6)] opacity-75"
                   : "text-[var(--neutrals7)] font-bold"
               }`}
@@ -49,7 +49,7 @@ export default function Stepper({ porcentaje }: { porcentaje: number }) {
             <div className='w-full h-[6px] rounded-[20px] bg-[var(--neutrals4)]'>
               <div
                 className={`bg-[var(--blueberry600)] h-[6px] transition-all duration-500 rounded-[20px] ${
-                  porcentaje == 50 ? "w-[50%]" : "w-[100%]"
+                  percentage == 50 ? "w-[50%]" : "w-[100%]"
                 }`}
               ></div>
             </div>
