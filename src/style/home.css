@@ -1,3 +1,22 @@
+.tag-promo {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: var(--br-sonoma-bold),sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: .4px;
+  background: linear-gradient(90deg,#00f4e2,#00ff7f);
+  color: var(--gray1)
+}
+
+@media (max-width: 767.9375px) {
+  .tag-promo {
+      font-size:12px;
+      padding: 2px 8px
+  }
+}
+
 .inputSelect {
   width: 100%;
   display: flex

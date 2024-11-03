@@ -1,3 +1,5 @@
+import '../style/stepper.css';
+
 export default function Stepper({ porcentaje }: { porcentaje: number }) {
   return (
     <section className='stepperHorizontal sticky top-0 z-20 mb-4'>
