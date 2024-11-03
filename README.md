@@ -42,11 +42,11 @@ Cada una de estas herramientas fue seleccionada por su rendimiento y por cómo f
 
 1. Clonar el repositorio:
    ```bash
-   git clone <URL del repositorio>
+   git clone https://github.com/saint333/rimac.git
    ```
 2. Entrar al directorio del proyecto:
    ```bash
-   cd nombre-del-proyecto
+   cd rimac
    ```
 
 ### Instalación de Dependencias
@@ -87,6 +87,26 @@ Este proyecto utiliza **Tailwind CSS** en lugar de **Sass** debido a varias vent
 - **Modularización**: Todos los componentes han sido diseñados para ser reutilizables, mejorando la mantenibilidad.
 - **Tipado Estricto con TypeScript**: Cada función y componente se tipó estrictamente para reducir errores y mejorar la robustez del código.
 - **Optimización de Performance**: Se realizaron pruebas exhaustivas para asegurar una experiencia fluida en dispositivos móviles y de escritorio.
+
+### Desplegar proyecto
+
+Para desplegar el proyecto ya sea netlify, render u otro y que este funcione corectamente y que no genere ningun error en las rutas internas, se debe de tener estos dos archivos:
+
+- **htaccess**
+  ```html
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+  </IfModule>
+  ```
+- **_redirects**
+  ```plaintext
+  /*    /index.html   200
+  ```
 
 ---
 
