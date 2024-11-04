@@ -8,7 +8,8 @@ interface CardOptionsProps {
   value: string;
   title: string;
   description: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (id: string) => void;
 }
 
 export const CardOptions: React.FC<CardOptionsProps> = ({
@@ -20,14 +21,14 @@ export const CardOptions: React.FC<CardOptionsProps> = ({
   onChange,
 }) => {
   return (
-    <div className='check__label'>
+    <div className='check__label' onChange={() => onChange(value)}>
       <input
         type='radio'
         id={id}
         name='price'
         hidden
         value={value}
-        onChange={(e) => onChange(e)}
+        // onChange={(e) => onChange(e)}
       />
       <label htmlFor={id} className='check__label--info'>
         <div className='check__label--box'>
@@ -66,7 +67,7 @@ export const PlanCard = ({
   index,
   type,
 }: PlanCardProps) => {
-  const plan = type == "para-alguien-mas";
+  const plan = type === "para-alguien-mas";
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setAuthService, getAuthService } = useContext(AuthContext);
@@ -76,21 +77,23 @@ export const PlanCard = ({
     const data = getAuthService();
     setTimeout(() => {
       setLoading(false);
-      if (typeof data === 'object' && data !== null) {
+      if (typeof data === "object" && data !== null) {
         setAuthService({
           ...data,
           plan: name,
-          price: plan ? (Number(price) - Number(price) * 0.05).toFixed(2) : price,
+          price: plan
+            ? (Number(price) - Number(price) * 0.05).toFixed(2)
+            : price,
         });
       } else {
-        console.error('AuthService data is not an object:', data);
+        console.error("AuthService data is not an object:", data);
       }
       navigate("/summary");
     }, 2000);
   };
 
   return (
-    <div className='md:w-[288px] md:min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-[696px]'>
+    <div className='w-full md:w-[288px] md:min-w-[288px] pt-[68px] pb-[51px] px-[32px] shadow-[0_1px_24px_0_rgba(174,172,243,.251)] rounded-[24px] flex flex-col relative transition-all opacity-100 duration-500 h-[696px]'>
       {index == 1 && (
         <div className='recommended absolute top-10 text-xs text-[var(--neutrals7)] bg-[var(--aqual4)] py-0.5 px-2 rounded-md font-black tracking-[.4px]'>
           Plan recomendado
@@ -121,7 +124,7 @@ export const PlanCard = ({
       </div>
       <div className='w-full h-[1px] bg-[var(--neutrals4)] my-[24px]'></div>
       <ul className='mb-[40px] flex flex-col gap-[24px]'>
-        {description.map((feature: string, index: number) => (
+        {description?.map((feature: string, index: number) => (
           <li
             key={index}
             className='list-disc ml-[18px] text-[16px] leading-7 tracking-[.1px] text-[var(--neutrals7)]'

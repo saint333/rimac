@@ -12,19 +12,21 @@ export default function Planes() {
   document.querySelector(".header-login")?.classList.add("header");
   document.querySelector(".header-login")?.classList.remove("header-login");
   const [loading, setLoading] = useState(false);
-  const [plans, setPlans] = useState<PlanCardProps[] | null[]>([]);
+  const [plans, setPlans] = useState<PlanCardProps[]>([]);
   const [typePlan, setTypePlan] = useState<string>("");
   const { user } = useContext(AuthContext);
 
-  const handleChange = async (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): Promise<void> => {
-    setPlans([null, null, null]);
+  const handleChange = async (value: string): Promise<void> => {
+    setPlans([]);
+
     setLoading(true);
     const plans = await PlansData();
-    const planesFilter = plans.filter((plan: PlanCardProps) => plan.age !== undefined && plan.age >= Number(user?.age));
+    const planesFilter = plans.filter(
+      (plan: PlanCardProps) =>
+        plan.age !== undefined && plan.age >= Number(user?.age)
+    );
     setPlans(planesFilter);
-    setTypePlan(e.target.value);
+    setTypePlan(value);
     setLoading(false);
   };
 
@@ -61,11 +63,9 @@ export default function Planes() {
                 />
               ))}
             </div>
-            {plans.length > 0 && (
-              <div className='planPrice transition-opacity opacity-100 duration-500'>
-                <Carousel plans={plans} loading={loading} type={typePlan} />
-              </div>
-            )}
+            <div className='planPrice transition-opacity opacity-100 duration-500'>
+              <Carousel plans={plans} loading={loading} type={typePlan} />
+            </div>
           </div>
         </div>
       </section>

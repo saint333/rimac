@@ -14,12 +14,19 @@ type Inputs = {
 };
 
 function calculateAge(dateBirth: string) {
-  const today = new Date();
-  const fechaNac = new Date(dateBirth);
-  let age = today.getFullYear() - fechaNac.getFullYear();
-  const month = today.getMonth() - fechaNac.getMonth();
+  const [day, month, year] = dateBirth.split("-").map(Number);
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    console.error("Fecha de nacimiento no válida:", dateBirth);
+    return NaN;
+  }
 
-  if (month < 0 || (month === 0 && today.getDate() < fechaNac.getDate())) {
+  const fechaNac = new Date(year, month - 1, day);
+
+  const today = new Date();
+  let age = today.getFullYear() - fechaNac.getFullYear();
+  const monthDiff = today.getMonth() - fechaNac.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < fechaNac.getDate())) {
     age--;
   }
 
@@ -46,13 +53,14 @@ export default function Home() {
     setValidating(true);
     setUserValid(false);
     const user = await UserData();
+    const age = calculateAge(user.birthDay)
     setValidating(false);
     if (
       data.documentNumber === "87654321" &&
       data.phoneNumber === "987654321"
     ) {
+      setAuthService({ ...data, ...user, age });
       reset();
-      setAuthService({ ...data, ...user, age: calculateAge(user.birthDay) });
       navigate("/plans");
     } else {
       setUserValid(true);
